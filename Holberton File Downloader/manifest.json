@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "name": "Holberton File Scraper",
+    "description": "This extension will create blank files using the filenames scraped from the current Holberton School project page.",
+    "version": "1.0",
+    "background" : {
+        "scripts": ["background.js"],
+        "persistent": false
+      },
+    "content_scripts": [
+        {
+            "matches": [
+                "https://intranet.hbtn.io/*"
+            ],
+            "js": [
+                "content_script.js"
+            ]
+        }
+    ],
+    "page_action": {
+        "default_icon": "holberton-logo-full-black.png",
+        "default_name": "Holberton File Scraper",
+        "default_popup": "popup.html"
+    },
+    "permissions": [
+        "activeTab",
+        "downloads"
+    ]
+}
