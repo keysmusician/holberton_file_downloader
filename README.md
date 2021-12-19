@@ -9,7 +9,7 @@ Holberton File Downloader is an extension for Google Chrome which downloads empt
 Comparison:
 | Category | Holberton File Downloader | hb-file-creator |
 |---|---|---|
-| Installation/setup | For now, download the extension folder. Go to `chrome://extensions/`, enable Developer mode, click "load unpacked," and select the extension folder. Eventually, it could be installed easily from the Chrome web store. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
+| Installation/setup | Eventually, it could be installed easily from the Chrome web store. For now, install manually. Download the extension folder, go to `chrome://extensions/`, enable Developer mode, click "load unpacked," and select the extension folder. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
 | Browser Compatability | Chrome | Chrome |
 | File destination | Only saves locally to Chrome's download location | Saves to any present working directory; Works inside a virtual machine|
 | Usage | Visit any project page, then click "find files", then "download files" | Type `hb <holberton_project_url>` + <return\>|
