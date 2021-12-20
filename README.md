@@ -16,6 +16,8 @@ Comparison:
 | Interface | GUI (HTML) | Command line |
 
 ## Bugs
-File names which include directories such as `dir/file.txt` get downloaded with the slashes converted to underscores, as in `dir_file.txt`. The extention ideally should create the neccessary directories. Additionally, all the files should be placed within a single directory rather than downloaded individually to the Chrome downloads location.
+- File names which include directories such as `dir/file.txt` get downloaded with the slashes converted to underscores, as in `dir_file.txt`. The extention ideally should create the neccessary directories. Additionally, all the files should be placed within a single directory rather than downloaded individually to the Chrome downloads location.
 
-Some files have appeared with a leading underscore. This may be caused by whitespace or an invisible character.
+- Some files have appeared with a leading underscore. This may be caused by whitespace or an invisible character.
+
+- Only downloads the first 10 files
