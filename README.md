@@ -15,9 +15,14 @@ Comparison:
 | Usage | Visit any project page, then click "find files", then "download files" | Type `hb <holberton_project_url>` + <return\>|
 | Interface | GUI (HTML) | Command line |
 
+## To do
+- Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.
+- Shebangs can be scraped and written to files.
+- For C projects, it could scrape `*-main.c` files (and maybe even autofill header files)
+
 ## Bugs
 - File names which include directories such as `dir/file.txt` get downloaded with the slashes converted to underscores, as in `dir_file.txt`. The extention ideally should create the neccessary directories. Additionally, all the files should be placed within a single directory rather than downloaded individually to the Chrome downloads location.
 
-- Some files have appeared with a leading underscore. This may be caused by whitespace or an invisible character.
+- Some files have downloaded with a leading underscore. This may be caused by whitespace or an invisible character.
 
 - Only downloads the first 10 files
