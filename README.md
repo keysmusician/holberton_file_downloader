@@ -17,7 +17,7 @@ Comparison:
 
 ## To do
 - Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.
-- Shebangs can be scraped and written to files.
+- Shebangs can be scraped and written to files. The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading.
 - For C projects, it could scrape `*-main.c` files (and maybe even autofill header files)
 
 ## Bugs
