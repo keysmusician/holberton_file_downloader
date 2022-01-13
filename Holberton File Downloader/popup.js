@@ -1,4 +1,3 @@
-let files;
 const findButton = document.getElementById('findButton');
 findButton.addEventListener('click', () => {
   chrome.tabs.query({
@@ -8,46 +7,53 @@ findButton.addEventListener('click', () => {
     chrome.tabs.sendMessage(
       tabs[0].id,
       { from: 'popup', subject: 'requestFilenames' },
-      (response) => {
-        const ul = document.getElementById('files');
-
-        // Reset the ul before adding new elements:
-        ul.textContent = '';
-
-        files = response.files;
-        if (response.files.length === 0) {
-          downloadButton.style.display = 'none';
-          ul.appendChild(document.createTextNode('No files found'));
-        } else {
-          downloadButton.style.display = 'block';
-          response.files.forEach(filename => {
-            const li = document.createElement('li');
-            li.appendChild(document.createTextNode(filename));
-            ul.appendChild(li);
-          });
-        }
-      }
+      handleContentScriptResponse
     );
   });
 });
 
-function download (data, filename, type) {
-  const file = new Blob([data], { type: type });
-  const a = document.createElement('a');
-  const url = URL.createObjectURL(file);
-  a.href = url;
-  a.download = filename;
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(function () {
-    document.body.removeChild(a);
-    window.URL.revokeObjectURL(url);
-  }, 0);
+const downloadButton = document.getElementById('downloadButton');
+
+function handleContentScriptResponse (response) {
+  // When the content script returns a messsage, display the filenames it
+  // found:
+  const ul = document.getElementById('files');
+
+  // Reset the unordered list before adding new elements:
+  ul.textContent = '';
+
+  if (response.files.length === 0) {
+    downloadButton.style.display = 'none';
+    ul.appendChild(document.createTextNode('No files found'));
+  } else {
+    downloadButton.style.display = 'block';
+    response.files.forEach(filename => {
+      const li = document.createElement('li');
+      li.appendChild(document.createTextNode(filename));
+      ul.appendChild(li);
+    });
+
+    downloadButton.addEventListener('click', () => {
+      download(response.files, response.projectTitle);
+    });
+  }
 }
 
-const downloadButton = document.getElementById('downloadButton');
-downloadButton.addEventListener('click', () => {
-  files.forEach(filename => {
-    download('', filename, 'text');
+function download (filenames, folderName = 'holberton-file-downloader') {
+  // Create a zip file
+  const zip = new JSZip();
+
+  // Add each file to the zip
+  filenames.forEach((filename) => {
+    const fileBlob = new Blob([''], { type: 'text' });
+    zip.file(filename, fileBlob);
   });
-});
+
+  // Add a README.md
+  zip.file('README.md', new Blob([folderName], { type: 'text' }));
+
+  // Download the zip
+  zip.generateAsync({ type: 'blob' }).then((zipfile) => {
+    saveAs(zipfile, folderName + '.zip');
+  });
+}

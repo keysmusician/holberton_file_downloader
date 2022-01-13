@@ -1,6 +1,7 @@
 chrome.runtime.sendMessage({ message: 'activate_icon' });
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if ((msg.from === 'popup') && (msg.subject === 'requestFilenames')) {
+    // Where in the DOM to expect filenames:
     const filenameListItems = document.querySelectorAll(
       'div.task-card div.list-group div.list-group-item ul li:last-child');
 
@@ -17,6 +18,14 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       }
     });
 
-    sendResponse({ files: Array.from(uniqueFilenames) });
+    // Get the project title
+    const projectTitle = document.querySelector(
+      'article div.project div h1.gap').textContent;
+
+    const response = {
+      files: Array.from(uniqueFilenames),
+      projectTitle: projectTitle
+    };
+    sendResponse(response);
   }
 });

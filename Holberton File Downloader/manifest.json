@@ -17,6 +17,7 @@
             ]
         }
     ],
+    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/; object-src 'self'",
     "page_action": {
         "default_icon": "holberton-logo-full-black.png",
         "default_name": "Holberton File Downloader",
