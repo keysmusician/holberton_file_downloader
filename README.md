@@ -18,7 +18,7 @@ Comparison:
 ## To do
 - Correctly name the project directory
 - Arrange files in the correct subdirectories
-- Use [Chrome's save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location
+- Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location
 - Shebangs can be scraped and written to files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
 - Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.
 - It could scrape main files (and maybe even autofill header files)
