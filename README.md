@@ -6,10 +6,26 @@ https://user-images.githubusercontent.com/74752740/149282794-389eda18-361c-4e54-
 ## About
 Holberton File Downloader is an extension for Google Chrome which downloads empty files from names scraped from the active Holberton School project web page. It is an alternative to [hb-file-creator](https://github.com/tieje/hb-file-creator) by [@Tieje](https://github.com/tieje).
 
-Comparison:
+## Installation
+*Eventually, it could be installed easily from the Chrome web store. For now, install manually:*
+
+1) Download the extension folder (by cloning this repository)
+2) In Chrome, navigate to `chrome://extensions/`
+3) Enable Developer mode, then click "load unpacked," and select the extension folder (called "Holberton File Downloader")
+<div align="center">
+  <img src=https://wd.imgix.net/image/BhuKGJaIeLNPW9ehns59NfwqKxF2/vOu7iPbaapkALed96rzN.png>
+
+  <p><em>Source: https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest</em></p>
+</div>
+
+4) Navigate to any Holberton School project page. If you're already viewing a project, refresh the page.
+
+That's it! Happy downloading!
+
+## Comparison:
 | Category | Holberton File Downloader | hb-file-creator |
 |---|---|---|
-| Installation/setup | *Eventually, it could be installed easily from the Chrome web store. For now, install manually:* Download the extension folder (clone this repo), go to `chrome://extensions/`, enable Developer mode, click "load unpacked," and select the extension folder. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
+| Installation/setup | Download and load the extention. See [Installation](#installation) above. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
 | Browser Compatability | Chrome | Chrome |
 | File destination | Only saves locally to Chrome's download location | Saves to any present working directory; Works inside a virtual machine|
 | Usage | Visit any project page, then click "find files", then "download files" | Type `hb <holberton_project_url>` + <return\>|
