@@ -16,8 +16,10 @@ Comparison:
 | Interface | GUI (HTML) | Command line |
 
 ## To do
-- Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.
+- Correctly name the project directory
+- Save files in the correct subdirectories
 - Shebangs can be scraped and written to files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
+- Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.
 - It could scrape main files (and maybe even autofill header files)
 
 ## Bugs
