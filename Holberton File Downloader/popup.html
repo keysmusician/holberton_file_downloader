@@ -5,19 +5,29 @@
     <title>Holberton File Downloader</title>
     <!-- using JSZip library https://stuk.github.io/jszip/ -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
+    <!-- using FileSaver library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.js"></script>
 </head>
 
 <body>
-    <h1>Holberton File Downloader</h1>
-<!--
-    <label for="savePath">Save location:</label>
-    <input type="text" id="savePath" name="savePath" value="~/Downloads"><br><br>
--->
-    <input id="findButton" type="submit" value="Find files">
-    <input id="downloadButton" type="submit" value="Download files" style="display: none;">
-    <ul id="files">
-    </ul>
+    <section class="top">
+        <h1>Holberton File Downloader</h1>
+        <!--
+        <label for="savePath">Save location:</label>
+        <input type="text" id="savePath" name="savePath" value="~/Downloads"><br><br>
+        -->
+        <input id="findButton" type="submit" value="Find files">
+        <input id="downloadButton" type="submit" value="Download files" style="display: none;">
+    </section>
+
+    <section class="bottom">
+        <p id="file-count"></p>
+        <ul id="files">
+        </ul>
+    </section>
+    <!-- Links don't work in extentions?
+    <footer><a href="https://github.com/keysmusician/holberton-file-downloader-chrome-extension">GitHub</a></footer>
+    -->
     <script src="popup.js"></script>
 </body>
 

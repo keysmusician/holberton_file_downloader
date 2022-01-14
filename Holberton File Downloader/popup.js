@@ -22,11 +22,13 @@ function handleContentScriptResponse (response) {
   // Reset the unordered list before adding new elements:
   ul.textContent = '';
 
-  if (response.files.length === 0) {
+  const fileCount = response.files.length;
+  if (fileCount === 0) {
     downloadButton.style.display = 'none';
     ul.appendChild(document.createTextNode('No files found'));
   } else {
-    downloadButton.style.display = 'block';
+    document.getElementById('file-count').textContent = fileCount + ' files';
+    downloadButton.style.display = 'inline-block';
     response.files.forEach(filename => {
       const li = document.createElement('li');
       li.appendChild(document.createTextNode(filename));
@@ -45,12 +47,8 @@ function download (filenames, folderName = 'holberton-file-downloader') {
 
   // Add each file to the zip
   filenames.forEach((filename) => {
-    const fileBlob = new Blob([''], { type: 'text' });
-    zip.file(filename, fileBlob);
+    zip.file(filename, new Blob([''], { type: 'text' }));
   });
-
-  // Add a README.md
-  zip.file('README.md', new Blob([folderName], { type: 'text' }));
 
   // Download the zip
   zip.generateAsync({ type: 'blob' }).then((zipfile) => {
