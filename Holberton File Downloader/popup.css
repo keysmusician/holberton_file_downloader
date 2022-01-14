@@ -1,0 +1,21 @@
+body {
+    min-width: 300px;
+}
+
+.top {
+    text-align: center;
+}
+
+h1 {
+    font-family: "aktiv-grotesk", sans-serif;
+}
+
+#file-count {
+    text-align: center;
+}
+
+#files {
+    max-height: 300px;
+    margin: 0;
+    overflow: auto;
+}
