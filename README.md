@@ -27,9 +27,10 @@ That's it! Happy downloading!
 |---|---|---|
 | Installation/setup | Download and load the extention. See [Installation](#installation) above. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
 | Browser Compatability | Chrome | Chrome |
-| File destination | Only saves locally to Chrome's download location | Saves to any present working directory; Works inside a virtual machine|
+| File destination | Only saves locally to Chrome's download location* | Saves to any present working directory; Works inside a virtual machine|
 | Usage | Visit any project page, then click "find files", then "download files" | Type `hb <holberton_project_url>` + <return\>|
 | Interface | GUI (HTML) | Command line |
+**There is a [feature branch](https://github.com/keysmusician/holberton-file-downloader-chrome-extension/tree/ft-save-as) to address this in progress*
 
 ## To do
 - Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location
