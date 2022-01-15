@@ -38,6 +38,8 @@ That's it! Happy downloading!
 
 - It could scrape main files (and maybe even autofill header files)
 
+- Display files in a tree structure
+
 - ~~Arrange files in the correct subdirectories~~
 
 - ~~Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.~~

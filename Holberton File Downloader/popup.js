@@ -1,5 +1,4 @@
-const findButton = document.getElementById('findButton');
-findButton.addEventListener('click', () => {
+document.getElementById('findButton').addEventListener('click', () => {
   chrome.tabs.query({
     active: true,
     currentWindow: true
@@ -12,12 +11,13 @@ findButton.addEventListener('click', () => {
   });
 });
 
-const downloadButton = document.getElementById('downloadButton');
+let PT = '';
 
 function handleContentScriptResponse (response) {
   // When the content script returns a messsage, display the filenames it
   // found:
   const ul = document.getElementById('files');
+  const downloadButton = document.getElementById('downloadButton');
 
   // Reset the unordered list before adding new elements:
   ul.textContent = '';
@@ -35,6 +35,7 @@ function handleContentScriptResponse (response) {
       ul.appendChild(li);
     });
 
+    PT = response.projectTitle;
     downloadButton.addEventListener('click', () => {
       download(response.files, response.projectTitle);
     });
@@ -52,6 +53,20 @@ function download (filenames, folderName = 'holberton-file-downloader') {
 
   // Download the zip
   zip.generateAsync({ type: 'blob' }).then((zipfile) => {
-    saveAs(zipfile, folderName + '.zip');
+    chrome.downloads.download({
+      saveAs: true,
+      filename: folderName.replace('.', ' ') + '.zip',
+      url: window.URL.createObjectURL(zipfile)
+    });
+    // saveAs(zipfile, folderName + '.zip');
   });
 }
+
+function getPT () {
+  return PT;
+}
+
+chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
+  const filename = getPT.bind(null, PT);
+  suggest({ filename: filename });
+});
