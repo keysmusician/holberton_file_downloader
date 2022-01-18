@@ -36,31 +36,20 @@ To download files, navigate to any Holberton School project page, click the exte
 ## To do
 
 - Include shebangs in the appropriate files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
-
 - Scrape main files
-
 - Include header guards in header files
-
 - Display files in a tree structure
-
 - Prettier interface/CSS
-
 - Dark mode
-
+- Cross Browser support
 - ~~Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location~~ Done 1/18/21
-
 - ~~Arrange files in the correct subdirectories~~
-
 - ~~Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.~~
-
 - ~~Correctly name the project directory~~
 
 
 ## Bugs
 - ~~File names which include directories such as `dir/file.txt` get downloaded with the slashes converted to underscores, as in `dir_file.txt`. The extention ideally should create the neccessary directories.~~ Fixed 1/14/21
-
 - ~~Some files have downloaded with a leading underscore. This may be caused by whitespace or an invisible character.~~ Fixed 1/14/21
-
 - ~~Additionally, all the files should be placed within a single directory rather than downloaded individually to the Chrome downloads location.~~ Fixed 1/13/21
-
 - ~~Only downloads the first 10 files~~ Fixed 1/13/21
