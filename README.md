@@ -24,7 +24,7 @@ That's it! The extension is installed.
 
 To download files, navigate to any Holberton School project page, click the extension icon, then "Find files," then "Download files." The extension is only active on `intranet.hbtn.io`.  If you were already viewing a project when you installed the extension, refresh the page. 
 
-## Comparison:
+## Comparison
 | Category | Holberton File Downloader | hb-file-creator |
 |---|---|---|
 | Installation/setup | Download and load the extention. See [Installation](#installation) above. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
