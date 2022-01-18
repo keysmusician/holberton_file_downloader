@@ -18,9 +18,11 @@ Holberton File Downloader is an extension for Google Chrome which downloads empt
   <p><em>Source: https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest</em></p>
 </div>
 
-4) Navigate to any Holberton School project page. If you're already viewing a project, refresh the page.
+That's it! The extension is installed.
 
-That's it! Happy downloading!
+## Usage
+
+To download files, navigate to any Holberton School project page, click the extension icon, then "Find files," then "Download files." The extension is only active on `intranet.hbtn.io`.  If you were already viewing a project when you installed the extension, refresh the page. 
 
 ## Comparison:
 | Category | Holberton File Downloader | hb-file-creator |
@@ -30,14 +32,17 @@ That's it! Happy downloading!
 | File destination | Only saves locally to Chrome's download location* | Saves to any present working directory; Works inside a virtual machine|
 | Usage | Visit any project page, then click "find files", then "download files" | Type `hb <holberton_project_url>` + <return\>|
 | Interface | GUI (HTML) | Command line |
+
 **There is a [feature branch](https://github.com/keysmusician/holberton-file-downloader-chrome-extension/tree/ft-save-as) to address this in progress*
 
 ## To do
 - Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location
 
-- Shebangs can be scraped and written to files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
+- Include shebangs in the appropriate files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
 
-- It could scrape main files (and maybe even autofill header files)
+- Scrape main files
+
+- Include header guards in header files
 
 - ~~Arrange files in the correct subdirectories~~
 
