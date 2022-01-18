@@ -1,3 +1,5 @@
+These are project pages that have some unique quality which makes them good candidates for testing:
+
 File with whitespace:
 https://intranet.hbtn.io/projects/229
 

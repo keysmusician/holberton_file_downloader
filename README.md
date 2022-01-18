@@ -18,11 +18,13 @@ Holberton File Downloader is an extension for Google Chrome which downloads empt
   <p><em>Source: https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest</em></p>
 </div>
 
-4) Navigate to any Holberton School project page. If you're already viewing a project, refresh the page.
+That's it! The extension is installed.
 
-That's it! Happy downloading!
+## Usage
 
-## Comparison:
+To download files, navigate to any Holberton School project page, click the extension icon, then "Find files," then "Download files." The extension is only active on `intranet.hbtn.io`.  If you were already viewing a project when you installed the extension, refresh the page. 
+
+## Comparison
 | Category | Holberton File Downloader | hb-file-creator |
 |---|---|---|
 | Installation/setup | Download and load the extention. See [Installation](#installation) above. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
@@ -33,9 +35,11 @@ That's it! Happy downloading!
 
 ## To do
 
-- Shebangs can be scraped and written to files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
+- Include shebangs in the appropriate files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
 
-- It could scrape main files (and maybe even autofill header files)
+- Scrape main files
+
+- Include header guards in header files
 
 - Display files in a tree structure
 
