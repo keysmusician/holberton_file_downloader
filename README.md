@@ -41,7 +41,7 @@ To download files, navigate to any Holberton School project page, click the exte
 - Display files in a tree structure
 - Prettier interface/CSS
 - Dark mode
-- Cross Browser support
+- Cross browser compatability
 - ~~Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location~~ Done 1/18/21
 - ~~Arrange files in the correct subdirectories~~
 - ~~Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.~~
