@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Holberton File Downloader",
-    "description": "This extension will create blank files using the filenames scraped from the active Holberton School project page.",
+    "description": "Creates blank project files using the filenames scraped from the active Holberton School project page.",
     "version": "1.0",
     "background" : {
         "scripts": ["background.js"],
@@ -17,9 +17,9 @@
             ]
         }
     ],
-    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/; object-src 'self'",
+    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/jszip/; object-src 'self'",
     "page_action": {
-        "default_icon": "holberton-logo-full-black.png",
+        "default_icon": "Holberton File Downloader.png",
         "default_name": "Holberton File Downloader",
         "default_popup": "popup.html"
     },
