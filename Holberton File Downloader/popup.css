@@ -6,6 +6,41 @@ body {
     text-align: center;
 }
 
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.buttons button{
+    background-color: #ffdbdb;
+    border: 2px solid rgb(255, 0, 0);
+    cursor: pointer;
+    height: 33px;
+    margin: 0px;
+}
+
+.buttons button:hover {
+    background-color: rgb(255, 131, 131);
+}
+
+#findButton {
+    border-radius: 33px;
+    margin-right: 10px;
+}
+
+#downloadButton {
+    border-top-left-radius: 33px;
+    border-bottom-left-radius: 33px;
+    border-right: .5px solid red;
+}
+
+#saveAsButton {
+    border-top-right-radius: 33px;
+    border-bottom-right-radius: 33px;
+    border-left: .5px solid red;
+}
+
 h1 {
     font-family: "aktiv-grotesk", sans-serif;
 }

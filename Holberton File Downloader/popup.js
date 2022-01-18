@@ -11,62 +11,62 @@ document.getElementById('findButton').addEventListener('click', () => {
   });
 });
 
-let PT = '';
+const downloadButton = document.getElementById('downloadButton');
+const saveAsButton = document.getElementById('saveAsButton');
+let hasListener = false;
 
 function handleContentScriptResponse (response) {
   // When the content script returns a messsage, display the filenames it
   // found:
   const ul = document.getElementById('files');
-  const downloadButton = document.getElementById('downloadButton');
 
   // Reset the unordered list before adding new elements:
   ul.textContent = '';
 
-  const fileCount = response.files.length;
+  let fileCount = 0;
+  if (response) {
+    fileCount = response.files.length;
+  }
+
   if (fileCount === 0) {
-    downloadButton.style.display = 'none';
-    ul.appendChild(document.createTextNode('No files found'));
+    document.getElementById('file-count').textContent = 'No files found';
   } else {
     document.getElementById('file-count').textContent = fileCount + ' files';
     downloadButton.style.display = 'inline-block';
+    saveAsButton.style.display = 'inline-block';
     response.files.forEach(filename => {
       const li = document.createElement('li');
       li.appendChild(document.createTextNode(filename));
       ul.appendChild(li);
     });
 
-    PT = response.projectTitle;
-    downloadButton.addEventListener('click', () => {
-      download(response.files, response.projectTitle);
-    });
+    if (!hasListener) {
+      downloadButton.addEventListener('click', () => {
+        download(response.files, response.projectTitle, false);
+      });
+      saveAsButton.addEventListener('click', () => {
+        download(response.files, response.projectTitle, true);
+      });
+      hasListener = true;
+    }
   }
 }
 
-function download (filenames, folderName = 'holberton-file-downloader') {
+function download (filenames, folderName = 'Holberton File Downloader', useSaveAs) {
   // Create a zip file
   const zip = new JSZip();
 
   // Add each file to the zip
   filenames.forEach((filename) => {
-    zip.file(filename, new Blob([''], { type: 'text' }));
+    zip.file(filename, new Blob([''], { type: 'text/plain' }));
   });
 
   // Download the zip
   zip.generateAsync({ type: 'blob' }).then((zipfile) => {
     chrome.downloads.download({
-      saveAs: true,
-      filename: folderName.replace('.', ' ') + '.zip',
+      saveAs: useSaveAs,
+      filename: folderName + '.zip',
       url: window.URL.createObjectURL(zipfile)
     });
-    // saveAs(zipfile, folderName + '.zip');
   });
 }
-
-function getPT () {
-  return PT;
-}
-
-chrome.downloads.onDeterminingFilename.addListener((downloadItem, suggest) => {
-  const filename = getPT.bind(null, PT);
-  suggest({ filename: filename });
-});
