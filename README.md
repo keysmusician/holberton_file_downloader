@@ -1,7 +1,7 @@
 # Holberton File Downloader
 The fast and convenient way to create Holberton School project files.
 
-https://user-images.githubusercontent.com/74752740/149282794-389eda18-361c-4e54-b617-2f790641b521.mov
+https://user-images.githubusercontent.com/74752740/149923346-53565e75-fcad-4adb-8b1c-42f2dd33d601.mov
 
 ## About
 Holberton File Downloader is an extension for Google Chrome which downloads empty files from names scraped from the active Holberton School project web page. It is an alternative to [hb-file-creator](https://github.com/tieje/hb-file-creator) by [@Tieje](https://github.com/tieje).
@@ -22,13 +22,13 @@ That's it! The extension is installed.
 
 ## Usage
 
-To download files, navigate to any Holberton School project page, click the extension icon, then "Find files," then "Download files." The extension is only active on `intranet.hbtn.io`.  If you were already viewing a project when you installed the extension, refresh the page. 
+To download files, navigate to any Holberton School project page, click the extension icon, then "Find files," then "Download" (or "Download as..." to choose the download location). The extension is only active on `intranet.hbtn.io`.  If you were already viewing a project when you installed the extension, refresh the page. 
 
 ## Comparison
 | Category | Holberton File Downloader | hb-file-creator |
 |---|---|---|
 | Installation/setup | Download and load the extention. See [Installation](#installation) above. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
-| Usage | Visit any project page, then click "find files", then "download files" | Type `hb <holberton_project_url>` + <return\>|
+| Usage | Visit any project page, then click "Find files", then "Download." | Type `hb <holberton_project_url>` + <return\>|
 | Browser Compatability | Chrome | Chrome |
 | File destination | Any local directory | Any local directory |
 | Interface | GUI (HTML) | Command line |
