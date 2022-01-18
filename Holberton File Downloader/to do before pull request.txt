@@ -1,1 +1,0 @@
-Something (probably content_script.js) is throwing an error when the no files are found on the page. Handle that elegently before finalizing.

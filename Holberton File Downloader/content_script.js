@@ -58,12 +58,17 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       uniqueFilePaths.add(directoryName + '/' + header);
     }
 
-    // Throw a README.md in there
-    uniqueFilePaths.add(directoryName + '/README.md');
-
     // Get the project title
-    const projectTitle = document.querySelector(
-      'article div.project div h1.gap').textContent;
+    let projectTitle = document.querySelector(
+      'article div.project div h1.gap');
+
+    // projectTitle should be `null` if we're not on a project page
+    if (projectTitle) {
+      projectTitle = projectTitle.textContent;
+
+      // Throw a README.md in there
+      uniqueFilePaths.add(directoryName + '/README.md');
+    }
 
     const response = {
       files: Array.from(uniqueFilePaths),
