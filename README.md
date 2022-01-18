@@ -26,19 +26,24 @@ That's it! Happy downloading!
 | Category | Holberton File Downloader | hb-file-creator |
 |---|---|---|
 | Installation/setup | Download and load the extention. See [Installation](#installation) above. | Download the script, a compatable Chrome driver, Python and Seleneum as needed. Configure your username & password in a JSON file, and alias the script. |
-| Browser Compatability | Chrome | Chrome |
-| File destination | Only saves locally to Chrome's download location | Saves to any present working directory; Works inside a virtual machine|
 | Usage | Visit any project page, then click "find files", then "download files" | Type `hb <holberton_project_url>` + <return\>|
+| Browser Compatability | Chrome | Chrome |
+| File destination | Any local directory | Any local directory |
 | Interface | GUI (HTML) | Command line |
 
 ## To do
-- Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location
 
 - Shebangs can be scraped and written to files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
 
 - It could scrape main files (and maybe even autofill header files)
 
 - Display files in a tree structure
+
+- Prettier interface/CSS
+
+- Dark mode
+
+- ~~Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location~~ Done 1/18/21
 
 - ~~Arrange files in the correct subdirectories~~
 
