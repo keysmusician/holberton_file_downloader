@@ -7,7 +7,19 @@ https://user-images.githubusercontent.com/74752740/149923346-53565e75-fcad-4adb-
 Holberton File Downloader is an extension for Google Chrome which downloads empty files from names scraped from the active Holberton School project web page. It is an alternative to [hb-file-creator](https://github.com/tieje/hb-file-creator) by [@Tieje](https://github.com/tieje).
 
 ## Installation
-*Eventually, it could be installed easily from the Chrome web store. For now, install manually:*
+
+### Chrome Web Store
+The easiest way to install Holberton File Downloader is from the Chrome Web Store: https://chrome.google.com/webstore/detail/holberton-file-downloader/lknkfkffdokfodgfmcblomakemcbgomp
+
+Simply click "Add to Chrome," and you'll be good to go.
+
+#### Enhanced Safe Browsing warning
+<img width="448" alt="Screen Shot 2022-01-18 at 7 43 02 PM" src="https://user-images.githubusercontent.com/74752740/150042101-2f2d0a15-762e-40e1-8f64-40deeed5f84b.png">
+If you see a warning that the extension is not trusted by Enhanced Safe Browsing, simply click "Continue to install." The warning is displayed because my developer account is new and has not yet recived trusted status, which can take a few months. Rest assured that the extension collects no data and downloads ONLY blank files scraped from the active Holberton School project page. Feel free to browse the source code to verify the safety.
+
+
+### Manual Unpacked Installation
+Alternatively, Holberton File Downloader may be installed manually and loaded unpacked. This can be useful if you wish to modify the extension.
 
 1) Download the extension folder (by cloning this repository)
 2) In Chrome, navigate to `chrome://extensions/`
