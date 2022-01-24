@@ -34,11 +34,11 @@ function handleContentScriptResponse (response) {
     document.getElementById('file-count').textContent = fileCount + ' files';
     downloadButton.style.display = 'inline-block';
     saveAsButton.style.display = 'inline-block';
-    response.files.forEach(filename => {
+    for (const file in response.files) {
       const li = document.createElement('li');
-      li.appendChild(document.createTextNode(filename));
+      li.appendChild(document.createTextNode(file));
       ul.appendChild(li);
-    });
+    }
 
     if (!hasListener) {
       downloadButton.addEventListener('click', () => {
@@ -52,14 +52,14 @@ function handleContentScriptResponse (response) {
   }
 }
 
-function download (filenames, folderName = 'Holberton File Downloader', useSaveAs) {
+function download (files, folderName = 'Holberton File Downloader', useSaveAs) {
   // Create a zip file
   const zip = new JSZip();
 
   // Add each file to the zip
-  filenames.forEach((filename) => {
-    zip.file(filename, new Blob([''], { type: 'text/plain' }));
-  });
+  for (const file in files) {
+    zip.file(file, new Blob([files[file]], { type: 'text/plain' }));
+  }
 
   // Download the zip
   zip.generateAsync({ type: 'blob' }).then((zipfile) => {

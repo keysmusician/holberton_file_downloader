@@ -23,6 +23,28 @@ function findCHeader () {
   return header;
 }
 
+function findMainFiles (directoryName) {
+  // Scape main filenames
+  const mainFilenames = {};
+  document.querySelectorAll('div.task-card pre').forEach(codeBlock => {
+    let filename;
+    let start = false;
+    const terminateExpression = new RegExp('.@.*\$');
+    codeBlock.innerText.split('\n').forEach(line => {
+      if (line.includes('$ cat ')) {
+        start = true;
+        filename = directoryName + '/' + line.split('$ cat ').pop().trim();
+        mainFilenames[filename] = '';
+      } else if (terminateExpression.test(line)) {
+        start = false;
+      } else if (start) {
+        mainFilenames[filename] += line + '\n';
+      }
+    });
+  });
+  return mainFilenames;
+}
+
 chrome.runtime.sendMessage({ message: 'activate_icon' });
 chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
   if ((msg.from === 'popup') && (msg.subject === 'requestFilenames')) {
@@ -52,6 +74,8 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       }
     });
 
+    const mainFiles = findMainFiles(directoryName);
+
     // Check for a header file, adding if found
     const header = findCHeader();
     if (header) {
@@ -70,8 +94,11 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       uniqueFilePaths.add(directoryName + '/README.md');
     }
 
+    const projectfiles = {};
+    uniqueFilePaths.forEach(filepath => { projectfiles[filepath] = ''; });
+
     const response = {
-      files: Array.from(uniqueFilePaths),
+      files: Object.assign({}, projectfiles, mainFiles),
       projectTitle: projectTitle
     };
     sendResponse(response);
