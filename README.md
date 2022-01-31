@@ -8,10 +8,12 @@ Holberton File Downloader is a browser extension which downloads project files f
 
 ## Installation
 
-### Chrome Web Store
-The easiest way to install Holberton File Downloader is from the Chrome Web Store: https://chrome.google.com/webstore/detail/holberton-file-downloader/lknkfkffdokfodgfmcblomakemcbgomp
+### Web Stores
+The easiest way to install Holberton File Downloader is from either the Chrome Web Store or Firefox Add-on store:
 
-Simply click "Add to Chrome," and you'll be good to go.
+https://chrome.google.com/webstore/detail/holberton-file-downloader/lknkfkffdokfodgfmcblomakemcbgomp
+
+https://addons.mozilla.org/en-US/firefox/addon/holberton-file-downloader/
 
 #### Enhanced Safe Browsing warning
 <img width="448" alt="Screen Shot 2022-01-18 at 7 43 02 PM" src="https://user-images.githubusercontent.com/74752740/150042101-2f2d0a15-762e-40e1-8f64-40deeed5f84b.png">
@@ -21,13 +23,22 @@ If you see a warning that the extension is not trusted by Enhanced Safe Browsing
 ### Manual Unpacked Installation
 Alternatively, Holberton File Downloader may be installed manually and loaded unpacked. This can be useful if you wish to modify the extension.
 
+#### Chrome:
 1) Download the extension folder (by cloning this repository)
-2) In Chrome, navigate to `chrome://extensions/`
+2) Navigate to `chrome://extensions/`
 3) Enable Developer mode, then click "load unpacked," and select the extension folder (called "Holberton File Downloader")
 <div align="center">
   <img src=https://wd.imgix.net/image/BhuKGJaIeLNPW9ehns59NfwqKxF2/vOu7iPbaapkALed96rzN.png>
 
   <p><em>Source: https://developer.chrome.com/docs/extensions/mv3/getstarted/#manifest</em></p>
+</div>
+
+#### Firefox:
+1) Download the extension folder (by cloning this repository)
+2) In Firefox, naavigate to `bout:debugging#/runtime/this-firefox`
+3) Click "Load Temporary Add-on..." and select a file in the same folder as `manifest.json`
+<div align="center">
+<img width="713" alt="Screen Shot 2022-01-31 at 12 03 25 AM" src="https://user-images.githubusercontent.com/74752740/151741908-d7e8ddec-fbc6-454c-b22f-4c10a4bf7e6c.png">
 </div>
 
 That's it! The extension is installed.
