@@ -35,7 +35,7 @@ Alternatively, Holberton File Downloader may be installed manually and loaded un
 
 #### Firefox:
 1) Download the extension folder (by cloning this repository)
-2) In Firefox, naavigate to `bout:debugging#/runtime/this-firefox`
+2) In Firefox, navigate to `about:debugging#/runtime/this-firefox`
 3) Click "Load Temporary Add-on..." and select a file in the same folder as `manifest.json`
 <div align="center">
 <img width="713" alt="Screen Shot 2022-01-31 at 12 03 25 AM" src="https://user-images.githubusercontent.com/74752740/151741908-d7e8ddec-fbc6-454c-b22f-4c10a4bf7e6c.png">
