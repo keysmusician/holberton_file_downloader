@@ -58,6 +58,8 @@ To download files, navigate to any Holberton School project page, click the exte
 
 ## To do
 
+- [ ] Search upon clicking the extension instead of clicking "Find files."
+- [ ] Merge Chrome and Firefox folders so both share files (See how [Dark Reader](https://github.com/darkreader/darkreader) does it)
 - [ ] Include toggleable contents by file extension:
   - [ ] Shebangs, where appropriate. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
   - [ ] Header guards in header files (\*.h)
