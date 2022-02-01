@@ -58,11 +58,14 @@ To download files, navigate to any Holberton School project page, click the exte
 
 ## To do
 
-- [ ] Include shebangs in the appropriate files. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
-- [ ] Include header guards in header files
-- [ ] Display files in a tree structure
-- [ ] Prettier interface/CSS
-- [ ] Dark mode
+- [ ] Include toggleable contents by file extension:
+  - [ ] Shebangs, where appropriate. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
+  - [ ] Header guards in header files (\*.h)
+  - [ ] Custom user-specified templates (README.md, \*.py, etc.)
+- [ ] UI
+  - [ ] Display files in a tree structure
+  - [ ] Prettier interface/CSS
+  - [ ] Dark mode
 - [x] ~~Cross browser compatability~~ Supports Firefox 1/28/22
 - [x] ~~Scrape main files~~
 - [x] ~~Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location~~ Done 1/18/22
