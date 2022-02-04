@@ -1,6 +1,6 @@
 These are project pages that have some unique quality which makes them good candidates for testing:
 
-File with whitespace:
+File names contain whitespace:
 https://intranet.hbtn.io/projects/229
 
 Complex file structure:
@@ -8,3 +8,7 @@ https://intranet.hbtn.io/projects/309
 
 No directories:
 https://intranet.hbtn.io/projects/228
+
+Main files with comments containing "@",":"
+Can fool too general of a regular expression:
+https://intranet.hbtn.io/projects/438
