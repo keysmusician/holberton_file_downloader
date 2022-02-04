@@ -77,6 +77,7 @@ To download files, navigate to any Holberton School project page, click the exte
 
 
 ## Bugs
+- Regex which determines when to stop scraping main/header file content is not specific enough; Can be "tricked" into terminating early.
 - ~~File names which include directories such as `dir/file.txt` get downloaded with the slashes converted to underscores, as in `dir_file.txt`. The extention ideally should create the neccessary directories.~~ Fixed 1/14/21
 - ~~Some files have downloaded with a leading underscore. This may be caused by whitespace or an invisible character.~~ Fixed 1/14/22
 - ~~Additionally, all the files should be placed within a single directory rather than downloaded individually to the Chrome downloads location.~~ Fixed 1/13/22
