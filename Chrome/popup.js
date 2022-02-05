@@ -1,14 +1,12 @@
-document.getElementById('findButton').addEventListener('click', () => {
-  chrome.tabs.query({
-    active: true,
-    currentWindow: true
-  }, tabs => {
-    chrome.tabs.sendMessage(
-      tabs[0].id,
-      { from: 'popup', subject: 'requestFilenames' },
-      handleContentScriptResponse
-    );
-  });
+chrome.tabs.query({
+  active: true,
+  currentWindow: true
+}, tabs => {
+  chrome.tabs.sendMessage(
+    tabs[0].id,
+    { from: 'popup', subject: 'requestFilenames' },
+    handleContentScriptResponse
+  );
 });
 
 const downloadButton = document.getElementById('downloadButton');

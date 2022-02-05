@@ -24,11 +24,6 @@ body {
     background-color: rgb(255, 131, 131);
 }
 
-#findButton {
-    border-radius: 33px;
-    margin-right: 10px;
-}
-
 #downloadButton {
     border-top-left-radius: 33px;
     border-bottom-left-radius: 33px;

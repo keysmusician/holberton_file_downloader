@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Holberton File Downloader: DEBUG",
-    "description": "Creates blank project files using the filenames scraped from the active Holberton School project page.",
+    "name": "Holberton File Downloader",
+    "description": "The fast and convenient way to create Holberton School project files.",
     "version": "1.1",
     "background" : {
         "scripts": ["background.js"]
