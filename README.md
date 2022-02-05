@@ -67,6 +67,7 @@ To download files, navigate to any Holberton School project page, click the exte
   - [ ] Display files in a tree structure
   - [ ] Prettier interface/CSS
   - [ ] Dark mode
+- [ ] Add a privacy policy
 - [x] ~~Search upon clicking the extension instead of clicking "Find files."~~
 - [x] ~~Cross browser compatibility~~ Supports Firefox 1/28/22
 - [x] ~~Scrape main files~~
@@ -77,6 +78,9 @@ To download files, navigate to any Holberton School project page, click the exte
 
 
 ## Bugs
+- ~~ If `cat -e` is used, the files are skipped, but they should be downloaded without the trailing `$`~~
+- ~~If there are multiple `cat`ted files with the same name, the first should be downloaded rather than the last; Don't overwrite.~~
+- ~~README.md and header files should be placed in the root directory absent a "0x" project folder.~~
 - ~~Project titles containing forward slashes result in treating the title as a path and creating a directory due to the illegal file name character.~~
 - ~~Blank files are created for non-text file extensions (e.g., .jpg, .so, .a ).~~
 - ~~A `cat` invocation followed by a bash redirect results in the redirect command being included in the file name.~~
@@ -89,7 +93,9 @@ To download files, navigate to any Holberton School project page, click the exte
 - ~~Only downloads the first 10 files~~ Fixed 1/13/22
 
 ### Limitations
-Currently, the string `$ cat ` is used to determine if a file in the task-card section of the project page ought to be scraped. This has the disadvantage of missing any files with more than one space after the `$`. It could be improved by using a regular expression, but I have yet to come across a situation where this has been an issue.
+Currently, the string `$ cat ` is used to determine if a file in the task-card section of the project page ought to be scraped. This has the disadvantage of missing any files with more than one space after the `$`. It could be improved by using a regular expression, but this has yet to be an issue.
+
+Use of `cat -e` is considered and the trailing `$` are stripped. Use of other options is unlikely, and modifies the output in more complex ways, so such files are skipped.
 
 If `$ cat ` is used to cat more than one file, it would be difficult to tell where that file ends and the next begins. The current behavior would consider the entire output of `cat` to belong to the first file that was `cat`ted. However, it is unlikely there will be a real situation where multiple files are `cat`ted in a project task card.
 

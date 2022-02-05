@@ -6,17 +6,19 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
       'div.task-card div.list-group div.list-group-item ul li:last-child');
 
     const uniqueFilePaths = new Set();
-    let directoryName = '';
+
+    // Save directory names for the README and header files
+    const projectDirectories = new Set();
 
     filenameListItems.forEach(li => {
       if (li.firstChild.textContent === 'File: ') {
         // If a file is found, also get its directory
+        let directoryName = '';
         const directoryElement = li.previousElementSibling;
         if (directoryElement.firstChild.textContent === 'Directory: ') {
           directoryName = directoryElement.lastChild.textContent.trim();
-        } else {
-          directoryName = '';
         }
+        projectDirectories.add(directoryName);
         const filename = li.lastChild.textContent;
         // Sometimes multiple files are named in the same list item.
         // Those should be split into separate strings:
@@ -28,16 +30,29 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     });
 
     // Files displayed by the "cat" command, not actual files containing cats
-    const catFiles = findCatFiles(directoryName);
+    const catFiles = findCatFiles();
+
+    // Header files and the README need to be placed in the correct directory,
+    // which is most likely any directory starting with "0x". There should
+    // never be more than one of these per project. If there is, use the first
+    // one. If there are no matching directories, place the files at the root
+    let projectDirectory = '';
+    for (const directoryName of projectDirectories) {
+      if (directoryName.split('/').pop().slice(0, 2) === '0x') {
+        projectDirectory = directoryName;
+        break;
+      }
+    }
 
     // Check for a header file, adding if found
     const header = findCHeader();
     if (header) {
-      uniqueFilePaths.add(directoryName + '/' + header);
+      uniqueFilePaths.add(projectDirectory + '/' + header);
     }
-
-    // Throw a README.md in there
-    uniqueFilePaths.add(directoryName + '/README.md');
+    // If any files were found, throw a README.md in there, too
+    if (uniqueFilePaths.size > 0) {
+      uniqueFilePaths.add(projectDirectory + '/README.md');
+    }
 
     // Create a mapping of each filename to an empty string
     const projectfiles = {};
@@ -82,12 +97,24 @@ function findCHeader () {
   return header;
 }
 
-function findCatFiles (directoryName) {
+function findCatFiles () {
   // Scrape main, header, etc. filenames displayed by the "cat" command
+
   const filenames = {};
   document.querySelectorAll('div.task-card pre').forEach(codeBlock => {
+    // Find the directory name
+    let directoryName = '';
+    codeBlock.parentElement.parentElement
+      .querySelectorAll('div.list-group div.list-group-item ul li')
+      .forEach(listGroupItem => {
+        if (listGroupItem.textContent.includes('Directory:')) {
+          directoryName = listGroupItem.firstElementChild.textContent;
+        }
+      });
+
     let filePath;
     let start = false;
+    let dashE = false;
     const terminateExpression = /(?<=^[\s]*)(\w+@.+(\$|#|%))/;
     codeBlock.innerText.split('\n').forEach(line => {
       if (line.includes('$ cat ')) {
@@ -106,7 +133,9 @@ function findCatFiles (directoryName) {
           // If any tokens follow the name of the file, it might be a
           // redirection, so we should skip recording this file
           if (skipThisCat) { return; }
-          if (token.slice(-1) === '\\') {
+          if (token === '-e') {
+            dashE = true;
+          } else if (token.slice(-1) === '\\') {
             filename += token.slice(0, -1) + ' ';
           } else {
             filename += token;
@@ -114,13 +143,20 @@ function findCatFiles (directoryName) {
           }
         }
 
+        // Ensure the file hasn't already been created. If it has, preserve it
+        filePath = directoryName + '/' + filename;
+        if (Object.prototype.hasOwnProperty.call(filenames, filePath)) {
+          return;
+        }
+
         // Once filename has been validated, start recording lines
         start = true;
-        filePath = directoryName + '/' + filename;
         filenames[filePath] = '';
       } else if (terminateExpression.test(line)) {
         start = false;
+        dashE = false;
       } else if (start) {
+        if (dashE) { line = line.trimEnd().slice(0, -1); }
         filenames[filePath] += line + '\n';
       }
     });
@@ -153,7 +189,7 @@ function removeFilesWithIgnoredExtensions (fileDict) {
 function findProjectTitle () {
   const projectTitleElement =
     document.querySelector('article div.project div h1.gap');
-  let projectTitle = '';
+  let projectTitle;
   // projectTitleElement should be `null` if we're not on a project page
   if (projectTitleElement) {
     projectTitle = projectTitleElement.textContent;

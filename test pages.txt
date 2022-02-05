@@ -26,3 +26,6 @@ Contains non-text project files:
 https://intranet.hbtn.io/projects/78
 https://intranet.hbtn.io/projects/220
 https://intranet.hbtn.io/projects/242
+
+All files are not in the same root directory (advanced tasks have separate directory):
+https://intranet.hbtn.io/projects/249
