@@ -78,7 +78,7 @@ To download files, navigate to any Holberton School project page, click the exte
 
 
 ## Bugs
-- ~~ If `cat -e` is used, the files are skipped, but they should be downloaded without the trailing `$`~~
+- ~~If `cat -e` is used, the files are skipped, but they should be downloaded without the trailing `$`~~
 - ~~If there are multiple `cat`ted files with the same name, the first should be downloaded rather than the last; Don't overwrite.~~
 - ~~README.md and header files should be placed in the root directory absent a "0x" project folder.~~
 - ~~Project titles containing forward slashes result in treating the title as a path and creating a directory due to the illegal file name character.~~
