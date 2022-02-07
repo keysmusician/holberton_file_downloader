@@ -97,6 +97,6 @@ Currently, the string `$ cat ` is used to determine if a file in the task-card s
 
 Use of `cat -e` is considered and the trailing `$` are stripped. Use of other options is unlikely, and modifies the output in more complex ways, so such files are skipped.
 
-If `$ cat ` is used to cat more than one file, it would be difficult to tell where that file ends and the next begins. The current behavior would consider the entire output of `cat` to belong to the first file that was `cat`ted. However, it is unlikely there will be a real situation where multiple files are `cat`ted in a project task card.
+If `$ cat ` is used to cat more than one file, it would be difficult to tell where one file ends and the next begins. The current behavior would consider the entire output of `cat` to belong to the first file that was `cat`ted. However, it is unlikely there will be a real situation where multiple files are `cat`ted in a project task card.
 
 Occasionally, a project may `cat` a file that doesn't need to be downloaded. In this case the simplest solution is to just delete the file, since it's much more difficult to get Holberton File Downloader to determine if a file is relevant or not.
