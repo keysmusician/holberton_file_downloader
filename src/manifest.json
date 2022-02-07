@@ -12,12 +12,11 @@
                 "https://intranet.hbtn.io/*"
             ],
             "js": [
-                "browser-polyfill.min.js",
+                "lib/browser-polyfill.min.js",
                 "content_script.js"
             ]
         }
     ],
-    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/jszip/; object-src 'self'",
     "page_action": {
         "default_icon": "Holberton File Downloader.png",
         "default_popup": "popup.html"
