@@ -45,7 +45,7 @@ That's it! The extension is installed.
 
 ## Usage
 
-To download files, navigate to any Holberton School project page, click the extension icon, then "Find files," then "Download" (or "Download as..." to choose the download location). The extension is only active on `intranet.hbtn.io`.  If you were already viewing a project when you installed the extension, refresh the page.
+To download files, navigate to any Holberton School project page, click the extension icon, then "Download" (or "Download as..." to choose the download location). The extension is only active on `intranet.hbtn.io`.  If you were already viewing a project when you installed the extension, refresh the page.
 
 ## Comparison
 | Category | Holberton File Downloader | hb-file-creator |
@@ -58,7 +58,6 @@ To download files, navigate to any Holberton School project page, click the exte
 
 ## To do
 
-- [ ] Merge Chrome and Firefox folders so both share files
 - [ ] Include toggleable contents by file extension:
   - [ ] Shebangs, where appropriate. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
   - [ ] Header guards in header files (\*.h)
@@ -68,6 +67,7 @@ To download files, navigate to any Holberton School project page, click the exte
   - [ ] Prettier interface/CSS
   - [ ] Dark mode
 - [ ] Add a privacy policy
+- [x] Merge Chrome and Firefox folders so both share files
 - [x] ~~Search upon clicking the extension instead of clicking "Find files."~~
 - [x] ~~Cross browser compatibility~~ Supports Firefox 1/28/22
 - [x] ~~Scrape main files~~

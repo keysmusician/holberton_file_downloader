@@ -1,6 +1,6 @@
-chrome.runtime.sendMessage({ message: 'activate_icon' });
-chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
-  if ((msg.from === 'popup') && (msg.subject === 'requestFilenames')) {
+browser.runtime.sendMessage({ message: 'activate_icon' });
+browser.runtime.onMessage.addListener(request => {
+  if ((request.from === 'popup') && (request.subject === 'filenames')) {
     // Where in the DOM to expect filenames:
     const filenameListItems = document.querySelectorAll(
       'div.task-card div.list-group div.list-group-item ul li:last-child');
@@ -64,11 +64,7 @@ chrome.runtime.onMessage.addListener((msg, sender, sendResponse) => {
     // Get the project title
     const projectTitle = findProjectTitle();
 
-    const response = {
-      files: allFiles,
-      projectTitle: projectTitle
-    };
-    sendResponse(response);
+    return Promise.resolve({ files: allFiles, projectTitle: projectTitle });
   }
 });
 
@@ -165,6 +161,7 @@ function findCatFiles () {
 }
 
 function removeFilesWithIgnoredExtensions (fileDict) {
+  // Remove any files with non-text file extensions
   const ignoredExtensions = [
     'a',
     'jpg',
@@ -173,7 +170,6 @@ function removeFilesWithIgnoredExtensions (fileDict) {
     'so'
   ];
 
-  // Remove any files with non-text file extensions
   for (const file in fileDict) {
     const fileSplit = file.split('.');
     if (fileSplit.length > 1) {

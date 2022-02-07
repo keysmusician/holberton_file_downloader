@@ -3,9 +3,10 @@
 
 <head>
     <title>Holberton File Downloader</title>
+    <meta charset="UTF-8">
     <link rel="stylesheet" href="popup.css">
-    <!-- using JSZip library to create the zip file https://stuk.github.io/jszip/ -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.2.0/jszip.min.js"></script>
+    <!-- Using Mozilla's browser polyfill for cross browser compatibility-->
+    <script src="browser-polyfill.min.js"></script>
 </head>
 
 <body>
@@ -22,9 +23,6 @@
         <ul id="files">
         </ul>
     </section>
-    <!-- How do you get links to work in extensions?
-    <footer><a href="https://github.com/keysmusician/holberton-file-downloader-chrome-extension">GitHub</a></footer>
-    -->
     <script src="popup.js"></script>
 </body>
 
