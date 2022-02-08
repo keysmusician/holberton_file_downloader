@@ -1,10 +1,10 @@
 {
     "manifest_version": 2,
-    "name": "Holberton File Downloader: DEBUG",
-    "description": "Creates blank project files using the filenames scraped from the active Holberton School project page.",
-    "version": "1.1",
+    "name": "Holberton File Downloader",
+    "description": "The fast and convenient way to create Holberton School project files.",
+    "version": "1.2",
     "background" : {
-        "scripts": ["background.js"]
+        "page": "background.html"
       },
     "content_scripts": [
         {
@@ -12,14 +12,11 @@
                 "https://intranet.hbtn.io/*"
             ],
             "js": [
+                "lib/browser-polyfill.min.js",
                 "content_script.js"
             ]
         }
     ],
-    "content_security_policy": "script-src 'self' https://cdnjs.cloudflare.com/ajax/libs/jszip/; object-src 'self'",
-    "icons": {
-        "19": "Holberton File Downloader.png"
-    },
     "page_action": {
         "default_icon": "Holberton File Downloader.png",
         "default_popup": "popup.html"

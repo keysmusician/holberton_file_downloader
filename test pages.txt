@@ -12,3 +12,20 @@ https://intranet.hbtn.io/projects/228
 Main files with comments containing "@",":"
 Can fool too general of a regular expression:
 https://intranet.hbtn.io/projects/438
+
+Atypical uses of cat such as redirecting the output;
+backslash appears in a catted filename (file should be ignored);
+project title contains a forward slash;
+indented terminal output:
+https://intranet.hbtn.io/projects/208
+
+Another cat redirect:
+https://intranet.hbtn.io/projects/274
+
+Contains non-text project files:
+https://intranet.hbtn.io/projects/78
+https://intranet.hbtn.io/projects/220
+https://intranet.hbtn.io/projects/242
+
+All files are not in the same root directory (advanced tasks have separate directory):
+https://intranet.hbtn.io/projects/249
