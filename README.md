@@ -1,7 +1,8 @@
 # Holberton File Downloader
 The fast and convenient way to create Holberton School project files.
 
-https://user-images.githubusercontent.com/74752740/149923346-53565e75-fcad-4adb-8b1c-42f2dd33d601.mov
+https://user-images.githubusercontent.com/74752740/153556612-1a328c71-e9c8-42d0-bc5c-5bd4c848a523.mov
+
 
 ## About
 Holberton File Downloader is a browser extension which downloads project files from file names scraped from the active Holberton School project web page. "Main" files are downloaded containing their contents, while other files are blank. Holberton File Downloader is an alternative to [hb-file-creator](https://github.com/tieje/hb-file-creator) by [@Tieje](https://github.com/tieje).
