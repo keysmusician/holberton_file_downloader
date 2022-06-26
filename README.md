@@ -101,3 +101,19 @@ Use of `cat -e` is considered and the trailing `$` are stripped. Use of other op
 If `$ cat ` is used to cat more than one file, it would be difficult to tell where one file ends and the next begins. The current behavior would consider the entire output of `cat` to belong to the first file that was `cat`ted. However, it is unlikely there will be a real situation where multiple files are `cat`ted in a project task card.
 
 Occasionally, a project may `cat` a file that doesn't need to be downloaded. In this case the simplest solution is to just delete the file, since it's much more difficult to get Holberton File Downloader to determine if a file is relevant or not.
+
+### Why This Project?
+Because I was really growing weary of the tedious process of copying and pasting many project file names and main file content every week. I wished I could just click a button and have it done for me. So I built the button. And now I use it all the time.
+
+This was my first time building a web extension. The main hurdles were:
+- Learning the architecture of an extension
+- Figuring out that I needed to put the download function on the background script(!)
+- Integrating webextension-polyfill for cross-browser compatibility
+- Getting the darn regular expressions right
+
+### Author
+I'm a software engineer specializing in machine learning and interested in DSP/audio programming. I'm also a jazz pianist and music producer.
+
+[LinkedIn](https://www.linkedin.com/in/justin-masayda-630164130/)
+
+[Twitter](https://twitter.com/JustinMasayda)
