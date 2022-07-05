@@ -1,0 +1,68 @@
+julien@ubuntu:~/factors$ cat tests/test00
+julien@ubuntu:~/RSA Factoring Challenge$
+vagrant@vagrant:~$ curl 0:8080
+$ python -m api.v1.app
+$ curl -XGET http://0.0.0.0:5000/api/v1/status
+sylvain@ubuntu$ telnet smtp.sendgrid.net 587
+sylvain@ubuntu$ telnet web-02.holberton.online 2222
+root@079b7269ec1b:~# su - holberton
+holberton@079b7269ec1b:~$ head /etc/passwd
+-su-4.3$ logout
+ubuntu@03-web-02:~$
+sylvain@ubuntu$ ./0-use_a_private_key
+ubuntu@server01:~$ exit
+vagrant@ubuntu:~$ sudo puppet apply 100-puppet_ssh_config.pp
+ubuntu@229-web-01:~/AirBnB_clone_v2$ python3 -m web_flask.0-hello_route
+vagrant@ubuntu-xenial:~$ curl -sI 35.231.193.217/airbnb-onepage/
+bob@dylan:~$ curl -s 127.0.0.1:5003/2-hbnb | tail -5
+ubuntu@web-01:~$ mysql -uholberton_user -p
+ubuntu@03-web-01:~$ ls
+root@sy-web-01$ ./1-install_nginx_web_server > /dev/null 2>&1
+
+sylvain@ubuntu$ ./7-OMG_WHY_ARE_YOU_SHOUTING.rb "I realLy hOpe VancouvEr posseSs Yummy Soft vAnilla Dupper Mint Ice Nutella cream" | cat -e
+ILOVESYSADMIN$
+sylvain@ubuntu$ ./7-OMG_WHY_ARE_YOU_SHOUTING.rb "WHAT do you SAY?" | cat -e
+WHATSAY$
+sylvain@ubuntu$ ./7-OMG_WHY_ARE_YOU_SHOUTING.rb "cannot read you" | cat -e
+$
+
+sylvain@ubuntu$ sylvain@ubuntu$ ./2-show_your_bash_pid
+
+This one caused a bug: double slashes in the file name when the file should have been ignored:
+sylvain@ubuntu$ cat /etc/passwd
+julien@ubuntu:/tmp/0x03$
+julien@production-503e7013:~$ export TRUEKNOWLEDGE=1209
+julien@production-503e7013:~/shell/fun_with_the_shell$ cat quote
+ubuntu@ip-172-31-63-244:~/0x03$ export NUM=3.14159265359
+ubuntu@ip-172-31-63-244:/$ \ls -1
+
+julien@ubuntu:/tmp/h$ ./0-hello_world | cat -e
+Hello, World$
+
+alex@ubuntu:/tmp$ ls -l
+
+This one also caused a bug. everything from "list" on shows up in the file name:
+julien@ubuntu:/tmp/0x02$ cat list | ./13-unique
+
+ubuntu@ip-172-31-63-244:~/0x02-shell_redirections$ ls -laR
+
+guillaume@ubuntu:~/$ cat 0-privileges.sql | mysql -hlocalhost -uroot -p
+
+$ cat pass
+ $ cat pass
+  $ cat pass
+  $  cat pass
+  $  cat  pass
+$  cat pass
+person@computer$ cat pass
+  person@computer$ cat pass
+person@ computer$ cat pass
+person@computer $ cat pass
+person @computer$ cat fail
+person @ computer $ cat fail
+k$ cat fail
+ k$ cat fail
+cat fail
+$ fail
+# fail
+% fail

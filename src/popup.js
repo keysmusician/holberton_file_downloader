@@ -1,13 +1,20 @@
+'use strict';
+
+/* globals browser */
+
 browser.tabs.query({ active: true, currentWindow: true })
-  .then(tabs => browser.tabs.sendMessage(
-    tabs[0].id, { from: 'popup', subject: 'filenames' }
-  )).then(response => handleContentScriptResponse(response));
+  .then(tabs => {
+    const tabId = tabs[0].id;
+    browser.tabs.sendMessage(
+      tabId, { from: 'popup', subject: 'send_filenames', to: tabId }
+    ).then(response => handleContentScriptResponse(response));
+  });
 
 const downloadButton = document.getElementById('downloadButton');
 const saveAsButton = document.getElementById('saveAsButton');
 
 function handleContentScriptResponse (response) {
-  // When the content script returns a messsage, display the filenames it
+  // When the content script returns a message, display the filenames it
   // found:
   const ul = document.getElementById('files');
 
@@ -34,21 +41,33 @@ function handleContentScriptResponse (response) {
       li.appendChild(document.createTextNode(file));
       ul.appendChild(li);
     }
+
+    // Add the files to storage
+    browser.storage.session.set({
+      files: response.files,
+      projectTitle: response.projectTitle + '.zip'
+    });
+
     // When a button is clicked, message the background page to start
     // downloading the files. They shouldn't be downloaded here because if the
     // popup closes, and URLs will be revoked. For example, in Firefox,
     // opening the "save as" dialogue causes the popup to close, which revokes
     // any URL generated in this script and fails the download.
-    downloadButton.addEventListener('click', () => {
-      browser.runtime.sendMessage({
-        message: 'download', data: response, saveAs: false
-      });
+    browser.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+      if (changeInfo.status === 'complete') {
+        browser.tabs.sendMessage(tabId, { subject: 'download' });
+      }
     });
-    saveAsButton.addEventListener('click', () =>
-      browser.runtime.sendMessage({
-        message: 'download', data: response, saveAs: true
-      })
-    );
+
+    function handleClick (useSaveAs) {
+      browser.storage.session.set({ useSaveAs: useSaveAs });
+      browser.tabs.create({
+        active: false,
+        url: 'download.html'
+      });
+    }
+    downloadButton.addEventListener('click', () => handleClick(false));
+    saveAsButton.addEventListener('click', () => handleClick(true));
   }
 }
 
