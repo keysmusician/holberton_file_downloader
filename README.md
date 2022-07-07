@@ -1,6 +1,20 @@
 # Holberton File Downloader
 The fast and convenient way to create Holberton School project files.
 
+## **NOTICE:**
+First of all, I was quite surprised to see the number of users has now exceeded 25. This project was originally for me, and I'm grateful to see it's helping others, too! Thank you for the 5-star rating on the Chrome Web Store!
+
+TL;DR:
+Holberton File Downloader might be dead.
+
+Here's the sitch: Google Chrome is phasing out Manifest V2, which will no longer be supported after January 2023. I've begun migrating to V3. Unfortunately, Manifest V3 requires significant fundamental changes to be made to the architecture of this extension, which will likely make it slightly less convenient. Additionally, Firefox does not currently support manifest V3. I don't have time to maintain two versions of the extension. What this means is that I might not be making further changes to the extension. If you encounter a bug, you can either:
+- Deal with it
+- Clone this repo, fix it yourself, and use your version (see instructions for loading an unpacked extension below or online)
+- Do the above, but also submit a pull request with your change to help other users
+
+If anything changes which might cause me to return to this project (Firefox accepts MV3, Chrome impliments new V3 features), I'll update. Thanks.
+— Justin
+
 https://user-images.githubusercontent.com/74752740/153556612-1a328c71-e9c8-42d0-bc5c-5bd4c848a523.mov
 
 
@@ -79,6 +93,7 @@ To download files, navigate to any Holberton School project page, click the exte
 
 
 ## Bugs
+- Files with a single "$" as the shell command prompt are not scraped. 
 - ~~If `cat -e` is used, the files are skipped, but they should be downloaded without the trailing `$`~~
 - ~~If there are multiple `cat`ted files with the same name, the first should be downloaded rather than the last; Don't overwrite.~~
 - ~~README.md and header files should be placed in the root directory absent a "0x" project folder.~~
