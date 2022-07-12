@@ -129,6 +129,6 @@ This was my first time building a web extension. The main hurdles were:
 ### Author
 I'm a software engineer specializing in machine learning and interested in DSP/audio programming. I'm also a jazz pianist and music producer.
 
-[LinkedIn](https://www.linkedin.com/in/justin-masayda-630164130/)
+[LinkedIn](https://www.linkedin.com/in/justin-masayda)
 
 [Twitter](https://twitter.com/JustinMasayda)
