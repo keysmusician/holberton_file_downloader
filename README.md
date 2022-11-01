@@ -66,7 +66,7 @@ To download files, navigate to any Holberton School project page, click the exte
 | Category | Holberton File Downloader | hb-file-creator |
 |---|---|---|
 | Installation/setup | Install from a web store, or download from this repo and load the extension. See [Installation](#installation) above. | Download the script, a compatible Chrome driver, Python and Selenium as needed. Configure your username & password in a JSON file, and alias the script. |
-| Usage | Visit any project page, then click "Find files", then "Download." | Type `hb <holberton_project_url>` + <return\>|
+| Usage | Visit any project page, click the extension logo, then click "Download." | Type `hb <holberton_project_url>` + <return\>|
 | Browser Compatibility | Chrome, Firefox | Chrome |
 | File destination | Any local directory | Any local directory |
 | Interface | GUI (HTML) | Command line (works inside a VM) |
