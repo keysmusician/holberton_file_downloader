@@ -38,8 +38,9 @@ If you see a warning that the extension is not trusted by Enhanced Safe Browsing
 ### Manual Unpacked Installation
 Alternatively, Holberton File Downloader may be installed manually and loaded unpacked. This can be useful if you wish to modify the extension.
 
+1) Download the extension folder (`git clone` this repository)
+
 #### Chrome:
-1) Download the extension folder (by cloning this repository)
 2) Navigate to `chrome://extensions/`
 3) Enable Developer mode, then click "load unpacked," and select the extension folder (called "Holberton File Downloader")
 <div align="center">
@@ -49,8 +50,7 @@ Alternatively, Holberton File Downloader may be installed manually and loaded un
 </div>
 
 #### Firefox:
-1) Download the extension folder (by cloning this repository)
-2) In Firefox, navigate to `about:debugging#/runtime/this-firefox`
+2) Navigate to `about:debugging#/runtime/this-firefox`
 3) Click "Load Temporary Add-on..." and select a file in the same folder as `manifest.json`
 <div align="center">
 <img width="713" alt="Screen Shot 2022-01-31 at 12 03 25 AM" src="https://user-images.githubusercontent.com/74752740/151741908-d7e8ddec-fbc6-454c-b22f-4c10a4bf7e6c.png">
