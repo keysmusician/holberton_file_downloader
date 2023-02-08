@@ -2,11 +2,7 @@
  * This script runs in the context of the active Holberton Intranet page.
  * It does the scraping of file names and contents.
  */
-
-
-//  Find out if you still need this:
-// browser.runtime.sendMessage({ message: 'activate_icon' });
-
+browser.runtime.sendMessage({ message: 'activate_icon' });
 
 browser.runtime.onMessage.addListener(request => {
   if ((request.from === 'popup') && (request.subject === 'filenames')) {
