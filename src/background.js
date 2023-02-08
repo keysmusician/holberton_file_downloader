@@ -1,37 +1,44 @@
-browser.runtime.onMessage.addListener((request, sender) => {
-  if (request.message === 'activate_icon') {
+/**
+ * Service worker.
+ *
+ * Manages the offscreen document and handles downloading files.
+ */
+chrome.runtime.onMessage.addListener((request, sender) => {
+/*   if (request.message === 'activate_icon') {
     browser.pageAction.show(sender.tab.id);
-  }
+  } */
   if (request.message === 'download') {
-    download(request.data.files, request.data.projectTitle, request.saveAs);
+    requestURL(request);
+  }
+
+  if (request.message === 'URL') {
+    downloadURL(request.url, request.useSaveAs, request.projectTitle);
   }
 });
 
-function download (files, folderName = 'Holberton File Downloader', useSaveAs) {
-  // Create a zip file
-  const zip = new JSZip();
-
-  // Add each file to the zip
-  for (const file in files) {
-    zip.file(file, new Blob([files[file]], { type: 'text/plain' }));
-  }
-
-  // Download the zip
-  zip.generateAsync({ type: 'blob' }).then((zipfile) => {
-    const url = window.URL.createObjectURL(zipfile);
-
-    function revokeURLOnComplete (delta) {
-      if (delta.state && delta.state.current === 'complete') {
-        URL.revokeObjectURL(url);
-        browser.downloads.onChanged.removeListener(revokeURLOnComplete);
-      }
-    }
-    browser.downloads.onChanged.addListener(revokeURLOnComplete);
-
-    browser.downloads.download({
-      saveAs: useSaveAs,
-      filename: folderName + '.zip',
-      url: url
+async function requestURL(request) {
+  try {
+    await chrome.offscreen.createDocument({
+      url: chrome.runtime.getURL('offscreen.html'),
+      reasons: ['BLOBS'],
+      justification: 'Creating a downloadable URL.',
     });
+  } finally {
+    chrome.runtime.sendMessage({ ...request, message: 'make_downloadable_URL' });
+  };
+}
+
+async function downloadURL (
+  url, useSaveAs, folderName = 'Holberton File Downloader') {
+
+  // Since the offscreen document is closed immediately after download
+  // completion, it is not necessary to revoke the URL.
+
+  await chrome.downloads.download({
+    saveAs: useSaveAs,
+    filename: folderName + '.zip',
+    url: url
   });
+
+  chrome.offscreen.closeDocument();
 }

@@ -1,28 +1,30 @@
 {
-    "manifest_version": 2,
-    "name": "Holberton File Downloader",
+    "manifest_version": 3,
+    "name": "TEST Holberton File Downloader",
     "description": "The fast and convenient way to create Holberton School project files.",
-    "version": "1.2",
-    "background" : {
-        "page": "background.html"
-      },
+    "version": "1.3",
+    "background": {
+        "service_worker": "background.js"
+    },
     "content_scripts": [
         {
             "matches": [
                 "https://intranet.hbtn.io/*"
             ],
             "js": [
-                "lib/browser-polyfill.min.js",
+                "lib/browser-polyfill.js",
                 "content_script.js"
             ]
         }
     ],
-    "page_action": {
+    "action": {
         "default_icon": "Holberton File Downloader.png",
-        "default_popup": "popup.html"
+        "default_popup": "popup.html",
+        "default_title": "Holberton File Downloader"
     },
     "permissions": [
         "activeTab",
-        "downloads"
+        "downloads",
+        "offscreen"
     ]
 }
