@@ -1,37 +1,63 @@
+/**
+ * Service worker.
+ *
+ * Manages the offscreen document and handles downloading files.
+ *
+ * If it seems convoluted to create a service worker, open an offscreen
+ * document from the service worker, make a URL in in the offscreen document,
+ * send it back to the service worker, download the blob from the URL, then
+ * close the offscreen document, it's because it is. This is the manifest V3
+ * way.
+ */
+import './lib/browser-polyfill.min.js';
+// An extension may only open one offscreen document at a time. I have to track
+// the state because there doesn't appear to be an existing API method for
+// this.
+let offscreen_document_is_open = false;
+
+browser.action.disable();
+
 browser.runtime.onMessage.addListener((request, sender) => {
   if (request.message === 'activate_icon') {
-    browser.pageAction.show(sender.tab.id);
+    browser.action.enable(sender.tab.id);
   }
   if (request.message === 'download') {
-    download(request.data.files, request.data.projectTitle, request.saveAs);
+    requestURL(request);
+  }
+  if (request.message === 'URL') {
+    downloadURL(request.url, request.useSaveAs, request.projectTitle);
   }
 });
 
-function download (files, folderName = 'Holberton File Downloader', useSaveAs) {
-  // Create a zip file
-  const zip = new JSZip();
+async function requestURL(request) {
+  if (!offscreen_document_is_open) {
+    await browser.offscreen.createDocument({
+      url: browser.runtime.getURL('offscreen.html'),
+      reasons: ['BLOBS'],
+      justification: 'Creating a downloadable URL.',
+    });
 
-  // Add each file to the zip
-  for (const file in files) {
-    zip.file(file, new Blob([files[file]], { type: 'text/plain' }));
+    offscreen_document_is_open = true;
   }
 
-  // Download the zip
-  zip.generateAsync({ type: 'blob' }).then((zipfile) => {
-    const url = window.URL.createObjectURL(zipfile);
-
-    function revokeURLOnComplete (delta) {
-      if (delta.state && delta.state.current === 'complete') {
-        URL.revokeObjectURL(url);
-        browser.downloads.onChanged.removeListener(revokeURLOnComplete);
-      }
-    }
-    browser.downloads.onChanged.addListener(revokeURLOnComplete);
-
-    browser.downloads.download({
-      saveAs: useSaveAs,
-      filename: folderName + '.zip',
-      url: url
-    });
+  browser.runtime.sendMessage({
+    ...request,
+    message: 'make_downloadable_URL'
   });
+}
+
+function downloadURL (
+  url, useSaveAs, folderName = 'Holberton File Downloader') {
+  // Since the offscreen document is closed immediately after starting a
+  // download, it is not necessary to revoke the URL.
+  browser.downloads.download({
+    saveAs: useSaveAs,
+    filename: folderName + '.zip',
+    url: url
+  });
+  // Not sure why downloads still work even though I don't wait for them to
+  // complete before closing the offscreen document. Keep an eye on this as it
+  // could be a potential bug source.
+  browser.offscreen.closeDocument();
+  offscreen_document_is_open = false;
 }
