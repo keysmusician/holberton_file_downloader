@@ -4,11 +4,11 @@ The fast and convenient way to create Holberton School project files.
 ### **NOTICE:**
 My time maintaining this extension has come to an end. Holberton School students, please feel free to fork and change as you please.
 
-I had previously announced that I would not be continuing to maintain this extension due to complications with manifest V3. Chrome has since postponed the transition to manifest V3 and added offscreen documents which provide similar functionality to background pages. Consequently, I have migrated the extension to the V3 paradigm. But, since I have graduated Holberton School, I no longer need this tool. I will not be developing it further. I hope current students will continue to use, share, and develop it.
+I had previously announced that it was unlikely that I would continue maintaining this extension due to complications with manifest V3. Chrome has since postponed the transition to manifest V3 and added offscreen documents which provide similar functionality to background pages. Consequently, I have migrated the extension to the V3 paradigm. But, since I have graduated Holberton School, I no longer need this tool. I will not be developing it further. I hope current students will continue to use, share, and develop it.
 
 At the time of writing, Firefox has not yet adopted service workers or offscreen documents, so cross-browser compatibility is still cumbersome. Additionally, it appears that all of the current users of this extension are Chrome users. For these reasons I have decided to only target Chrome for the update to manifest V3 (though I am still using [webextension-polyfill](https://github.com/mozilla/webextension-polyfill), so if Firefox eventually does support the same features as Chrome, it should be simple to make it cross-browser again). Version 1.2 is still available on the Firefox Add-ons store.
 
-Once again, this project was originally for me, so I'm grateful to see it has helped over 30 other students! Thank you again for the 5-star rating on the Chrome Web Store!
+Once again, this project was originally for me, so I'm grateful to see it has helped over 35 other students! Thank you again for the 5-star rating on the Chrome Web Store!
 — Justin
 
 https://user-images.githubusercontent.com/74752740/153556612-1a328c71-e9c8-42d0-bc5c-5bd4c848a523.mov
