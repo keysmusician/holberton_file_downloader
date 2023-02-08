@@ -1,4 +1,13 @@
-browser.runtime.sendMessage({ message: 'activate_icon' });
+/**
+ * This script runs in the context of the active Holberton Intranet page.
+ * It does the scraping of file names and contents.
+ */
+
+
+//  Find out if you still need this:
+// browser.runtime.sendMessage({ message: 'activate_icon' });
+
+
 browser.runtime.onMessage.addListener(request => {
   if ((request.from === 'popup') && (request.subject === 'filenames')) {
     // Where in the DOM to expect filenames:
@@ -7,12 +16,12 @@ browser.runtime.onMessage.addListener(request => {
 
     const uniqueFilePaths = new Set();
 
-    // Save directory names for the README and header files
+    // Save directory names for the README and header files.
     const projectDirectories = new Set();
 
     filenameListItems.forEach(li => {
       if (li.firstChild.textContent === 'File: ') {
-        // If a file is found, also get its directory
+        // If a file is found, also get its directory.
         let directoryName = '';
         const directoryElement = li.previousElementSibling;
         if (directoryElement.firstChild.textContent === 'Directory: ') {
@@ -30,12 +39,13 @@ browser.runtime.onMessage.addListener(request => {
     });
 
     // Files displayed by the "cat" command, not actual files containing cats
+    // ;)
     const catFiles = findCatFiles();
 
     // Header files and the README need to be placed in the correct directory,
     // which is most likely any directory starting with "0x". There should
     // never be more than one of these per project. If there is, use the first
-    // one. If there are no matching directories, place the files at the root
+    // one. If there are no matching directories, place the files at the root.
     let projectDirectory = '';
     for (const directoryName of projectDirectories) {
       if (directoryName.split('/').pop().slice(0, 2) === '0x') {
@@ -44,24 +54,24 @@ browser.runtime.onMessage.addListener(request => {
       }
     }
 
-    // Check for a header file, adding if found
+    // Check for a header file, adding if found.
     const header = findCHeader();
     if (header) {
       uniqueFilePaths.add(projectDirectory + '/' + header);
     }
-    // If any files were found, throw a README.md in there, too
+    // If any files were found, throw a "README.md" in there, too.
     if (uniqueFilePaths.size > 0) {
       uniqueFilePaths.add(projectDirectory + '/README.md');
     }
 
-    // Create a mapping of each filename to an empty string
+    // Create a mapping of each filename to an empty string.
     const projectfiles = {};
     uniqueFilePaths.forEach(filepath => { projectfiles[filepath] = ''; });
 
     const allFiles = removeFilesWithIgnoredExtensions(
       Object.assign({}, projectfiles, catFiles));
 
-    // Get the project title
+    // Get the project title.
     const projectTitle = findProjectTitle();
 
     return Promise.resolve({ files: allFiles, projectTitle: projectTitle });
@@ -69,12 +79,12 @@ browser.runtime.onMessage.addListener(request => {
 });
 
 function findCHeader () {
-  // Look in the project description
+  // Look in the project description.
   const projectDescriptionH2 = document.querySelectorAll(
     '#project-description h2');
   let header;
   projectDescriptionH2.forEach(h2 => {
-    // Find the first unordered list following "Requirements"
+    // Find the first unordered list following "Requirements."
     if (h2.innerText.trim() === 'Requirements') {
       let nextSibling = h2.nextElementSibling;
       while (nextSibling) {
@@ -94,11 +104,11 @@ function findCHeader () {
 }
 
 function findCatFiles () {
-  // Scrape main, header, etc. filenames displayed by the "cat" command
+  // Scrape main, header, etc. filenames displayed by the "cat" command.
 
   const filenames = {};
   document.querySelectorAll('div.task-card pre').forEach(codeBlock => {
-    // Find the directory name
+    // Find the directory name.
     let directoryName = '';
     codeBlock.parentElement.parentElement
       .querySelectorAll('div.list-group div.list-group-item ul li')
@@ -119,7 +129,7 @@ function findCatFiles () {
         const postCat = line.split('$ cat ').pop().trim();
 
         // Ignore absolute paths, since relevant files will be in the PWD or
-        // given by relative path if not
+        // given by relative path if not.
         if (!postCat[0] || postCat[0] === '/') { return; }
 
         // Validate filename
@@ -127,7 +137,7 @@ function findCatFiles () {
         let skipThisCat = false;
         for (const token of postCat.split(' ')) {
           // If any tokens follow the name of the file, it might be a
-          // redirection, so we should skip recording this file
+          // redirection, so we should skip recording this file.
           if (skipThisCat) { return; }
           if (token === '-e') {
             dashE = true;
@@ -139,13 +149,13 @@ function findCatFiles () {
           }
         }
 
-        // Ensure the file hasn't already been created. If it has, preserve it
+        // Ensure the file hasn't already been created. If it has, preserve it.
         filePath = directoryName + '/' + filename;
         if (Object.prototype.hasOwnProperty.call(filenames, filePath)) {
           return;
         }
 
-        // Once filename has been validated, start recording lines
+        // Once filename has been validated, start recording lines.
         start = true;
         filenames[filePath] = '';
       } else if (terminateExpression.test(line)) {
@@ -161,7 +171,7 @@ function findCatFiles () {
 }
 
 function removeFilesWithIgnoredExtensions (fileDict) {
-  // Remove any files with non-text file extensions
+  // Remove any files with non-text file extensions.
   const ignoredExtensions = [
     'a',
     'jpg',
@@ -186,7 +196,7 @@ function findProjectTitle () {
   const projectTitleElement =
     document.querySelector('article div.project div h1.gap');
   let projectTitle;
-  // projectTitleElement should be `null` if we're not on a project page
+  // `projectTitleElement` should be `null` if we're not on a project page.
   if (projectTitleElement) {
     projectTitle = projectTitleElement.textContent;
     projectTitle = projectTitle.replace('/', '_');
