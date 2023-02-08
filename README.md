@@ -1,18 +1,14 @@
 # Holberton File Downloader
 The fast and convenient way to create Holberton School project files.
 
-## **NOTICE:**
-First of all, I was quite surprised to see the number of users has now exceeded 25. This project was originally for me, and I'm grateful to see it's helping others, too! Thank you for the 5-star rating on the Chrome Web Store!
+### **NOTICE:**
+My time maintaining this extension has come to an end. Holberton School students, please feel free to fork and change as you please.
 
-TL;DR:
-Holberton File Downloader might be dead.
+I had previously announced that I would not be continuing to maintain this extension due to complications with manifest V3. Chrome has since postponed the transition to manifest V3 and added offscreen documents which provide similar functionality to background pages. Consequently, I have migrated the extension to the V3 paradigm. But, since I have graduated Holberton School, I no longer need this tool. I hope current students will continue to use, share, and develop it.
 
-Here's the sitch: Google Chrome is phasing out Manifest V2, which will no longer be supported after January 2023. I've begun migrating to V3. Unfortunately, Manifest V3 requires significant fundamental changes to be made to the architecture of this extension, which will likely make it slightly less convenient. Additionally, Firefox does not currently support manifest V3. I don't have time to maintain two versions of the extension. What this means is that I might not be making further changes to the extension. If you encounter a bug, you can either:
-- Deal with it
-- Clone this repo, fix it yourself, and use your version (see instructions for loading an unpacked extension below or online)
-- Do the above, but also submit a pull request with your change to help other users
+At the time of writing, Firefox has not yet adopted service workers or offscreen documents, so cross-browser compatibility is still cumbersome. Additionally, it appears that all of the current users of this extension are Chrome users. For these reasons I have decided to only target Chrome for the update to manifest V3 (though I am still using [webextension-polyfill](https://github.com/mozilla/webextension-polyfill), so if Firefox eventually does support the same features as Chrome, it should be simple to make it cross-browser again). Version 1.2 is still available on the Firefox Add-ons store.
 
-If anything changes which might cause me to return to this project (Firefox accepts MV3, Chrome impliments new V3 features), I'll update. Thanks.
+Once again, this project was originally for me, so I'm grateful to see it has helped over 30 other students! Thank you again for the 5-star rating on the Chrome Web Store!
 — Justin
 
 https://user-images.githubusercontent.com/74752740/153556612-1a328c71-e9c8-42d0-bc5c-5bd4c848a523.mov
@@ -36,7 +32,7 @@ If you see a warning that the extension is not trusted by Enhanced Safe Browsing
 
 
 ### Manual Unpacked Installation
-Alternatively, Holberton File Downloader may be installed manually and loaded unpacked. This can be useful if you wish to modify the extension.
+Alternatively, Holberton File Downloader may be installed manually and loaded unpacked. This is useful if you wish to develop/modify the extension.
 
 1) Download the extension folder (`git clone` this repository)
 
@@ -51,7 +47,7 @@ Alternatively, Holberton File Downloader may be installed manually and loaded un
 
 #### Firefox:
 2) Navigate to `about:debugging#/runtime/this-firefox`
-3) Click "Load Temporary Add-on..." and select a file in the same folder as `manifest.json`
+3) Click "Load Temporary Add-on..." and select a file in the same folder as `manifest.json` (for manifest V3, you may need to enable the developer preview first: https://extensionworkshop.com/documentation/develop/manifest-v3-migration-guide/)
 <div align="center">
 <img width="713" alt="Screen Shot 2022-01-31 at 12 03 25 AM" src="https://user-images.githubusercontent.com/74752740/151741908-d7e8ddec-fbc6-454c-b22f-4c10a4bf7e6c.png">
 </div>
