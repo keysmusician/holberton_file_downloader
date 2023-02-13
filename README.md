@@ -4,11 +4,11 @@ The fast and convenient way to create Holberton School project files.
 ### **NOTICE:**
 My time maintaining this extension has come to an end. Holberton School students, please feel free to fork and change as you please.
 
-I had previously announced that it was unlikely that I would continue maintaining this extension due to complications with manifest V3. Chrome has since postponed the transition to manifest V3 and added offscreen documents which provide similar functionality to background pages. Consequently, I have migrated the extension to the V3 paradigm. But, since I have graduated Holberton School, I no longer need this tool. I will not be developing it further. I hope current students will continue to use, share, and develop it.
+I had previously announced that it was unlikely that I would continue maintaining this extension due to complications with manifest V3. Chrome has since postponed the transition to manifest V3 and added offscreen documents which provide similar functionality to background pages. Consequently, I have migrated to manifest V3. But, since I have graduated Holberton School, I no longer need this tool. I will not be developing it further. I hope current students will continue to use, share, and develop it.
 
 At the time of writing, Firefox has not yet adopted service workers or offscreen documents, so cross-browser compatibility is still cumbersome. Additionally, it appears that all of the current users of this extension are Chrome users. For these reasons I have decided to only target Chrome for the update to manifest V3 (though I am still using [webextension-polyfill](https://github.com/mozilla/webextension-polyfill), so if Firefox eventually does support the same features as Chrome, it should be simple to make it cross-browser again). Version 1.2 is still available on the Firefox Add-ons store.
 
-Once again, this project was originally for me, so I'm grateful to see it has helped over 35 other students! Thank you again for the 5-star rating on the Chrome Web Store!
+This project was originally for me, so I'm grateful to see it has helped over 35 other students! Thank you again for the 5-star rating on the Chrome Web Store!
 — Justin
 
 https://user-images.githubusercontent.com/74752740/153556612-1a328c71-e9c8-42d0-bc5c-5bd4c848a523.mov
@@ -31,7 +31,7 @@ https://addons.mozilla.org/en-US/firefox/addon/holberton-file-downloader/
 If you see a warning that the extension is not trusted by Enhanced Safe Browsing, simply click "Continue to install." The warning is displayed because my developer account is new and has not yet received trusted status, which can take a few months. Rest assured that the extension collects no data and is capable of doing nothing except downloading files scraped from the active Holberton School project page. Feel free to browse the source code to verify the safety.
 
 
-### Manual Unpacked Installation
+### Manual Unpacked Installation (Development)
 Alternatively, Holberton File Downloader may be installed manually and loaded unpacked. This is useful if you wish to develop/modify the extension.
 
 1) Download the extension folder (`git clone` this repository)
@@ -67,29 +67,19 @@ To download files, navigate to any Holberton School project page, click the exte
 | File destination | Any local directory | Any local directory |
 | Interface | GUI (HTML) | Command line (works inside a VM) |
 
-## To do
+## Improvement Suggestions
 
-- [ ] Include toggleable contents by file extension:
-  - [ ] Shebangs, where appropriate. ~~The downside of this is that Chrome detects these as executable scripts and issues a warning when downloading~~ (this is no longer an issue with the adoption of .zip files).
+- [ ] Include toggleable file contents by file extension:
+  - [ ] Shebangs, where appropriate
   - [ ] Header guards in header files (\*.h)
   - [ ] Custom user-specified templates (README.md, \*.py, etc.)
 - [ ] UI
   - [ ] Display files in a tree structure
   - [ ] Prettier interface/CSS
   - [ ] Dark mode
-- [ ] Add a privacy policy
-- [x] Merge Chrome and Firefox folders so both share files
-- [x] ~~Search upon clicking the extension instead of clicking "Find files."~~
-- [x] ~~Cross browser compatibility~~ Supports Firefox 1/28/22
-- [x] ~~Scrape main files~~
-- [x] ~~Use [Chrome's download/save dialog](https://developer.chrome.com/docs/extensions/reference/downloads/#method-download) to specify download location~~ Done 1/18/22
-- [x] ~~Arrange files in the correct subdirectories~~
-- [x] ~~Sometimes filenames (header files for C projects) appear in the "Requirements" section. These could be included as well.~~
-- [x] ~~Correctly name the project directory~~
-
 
 ## Bugs
-- Files with a single "$" as the shell command prompt are not scraped. 
+- File contents scraped from task cards with a single "$" as the shell command prompt are not properly terminated. 
 - ~~If `cat -e` is used, the files are skipped, but they should be downloaded without the trailing `$`~~
 - ~~If there are multiple `cat`ted files with the same name, the first should be downloaded rather than the last; Don't overwrite.~~
 - ~~README.md and header files should be placed in the root directory absent a "0x" project folder.~~
@@ -114,7 +104,7 @@ If `$ cat ` is used to cat more than one file, it would be difficult to tell whe
 Occasionally, a project may `cat` a file that doesn't need to be downloaded. In this case the simplest solution is to just delete the file, since it's much more difficult to get Holberton File Downloader to determine if a file is relevant or not.
 
 ### Why This Project?
-Because I was really growing weary of the tedious process of copying and pasting many project file names and main file content every week. I wished I could just click a button and have it done for me. So I built the button. And now I use it all the time.
+I was really growing weary of the tedious process of copying and pasting many project file names and main file content every week. I wished I could just click a button and have it done for me. So I built the button.
 
 This was my first time building a web extension. The main hurdles were:
 - Learning the architecture of an extension
@@ -123,7 +113,7 @@ This was my first time building a web extension. The main hurdles were:
 - Getting the darn regular expressions right
 
 ### Author
-I'm a software engineer specializing in machine learning and interested in DSP/audio programming. I'm also a jazz pianist and music producer.
+I'm a software engineer specialized in machine learning and interested in DSP/audio programming. I'm also a jazz pianist and music producer.
 
 [LinkedIn](https://www.linkedin.com/in/justin-masayda)
 
